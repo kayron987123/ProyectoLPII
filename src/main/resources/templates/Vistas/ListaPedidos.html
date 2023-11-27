@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>ListaPedidos</title>
+
+
+	<!-- Bootstrap core CSS -->
+	<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<!-- Navigation -->
+	<div th:include="PaginaMaestraProductos::nav"></div>
+
+	<!-- Page Content -->
+	<div class="container">
+
+
+		<!-- Page Heading/Breadcrumbs -->
+		<h1 class="mt-4 mb-3">
+			Lista de Pedidos
+		</h1>
+
+
+		<a class="btn btn-primary" th:href="@{/Vistas/RegistrarPedido}"> Crear Pedido</a>
+		
+		<h1></h1>
+		<h2>Pedidos</h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Codigo</th>
+					<th scope="col">Empleado</th>
+					<th scope="col">Fecha de Creacion</th>
+					<th scope="col">Estado</th>
+					<th scope="col">MetodoPago</th>
+					<th scope="col">Descuento</th>
+					<th scope="col">Accion</th>
+					<th scope="col">Accion</th>
+				</tr>
+			</thead>
+			
+			<tbody >
+				<tr th:each="ped:${listapedidos}">
+					<td th:text="${ped.idpedido}"></td>
+					<td th:text="${ped.empleado}"></td>
+					<td th:text="${ped.fechapedido}"></td>
+					<td th:text="${ped.estado}"></td>
+					<td th:text="${ped.metodopago}"></td>
+					<td th:text="${ped.total}"></td>
+					<td><a class="btn btn-warning" th:href="@{EditarPedido/}+${ped.idpedido}">Editar</a> </td>
+					<td><a class="btn btn-danger" th:href="@{EliminarPedido/}+${ped.idpedido}">Eliminar</a> </td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	<!-- /.container -->
+
+	<!-- Footer -->
+	<div th:include="PaginaMaestraProductos::footer"></div>
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="../vendor/jquery/jquery.min.js"></script>
+	<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

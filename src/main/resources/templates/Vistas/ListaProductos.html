@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>ListaProductos</title>
+
+
+	<!-- Bootstrap core CSS -->
+	<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<!-- Navigation -->
+	<div th:include="PaginaMaestraProductos::nav"></div>
+
+	<!-- Page Content -->
+	<div class="container">
+
+
+		<!-- Page Heading/Breadcrumbs -->
+		<h1 class="mt-4 mb-3">
+			Lista de Productos
+		</h1>
+
+
+		<a class="btn btn-primary" th:href="@{/Vistas/RegistrarProducto}"> Crear Producto</a>
+		
+		<h1></h1>
+		<h2>Productos</h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Codigo</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Descripcion</th>
+					<th scope="col">Marca</th>
+					<th scope="col">Categoria</th>
+					<th scope="col">Precio</th>
+					<th scope="col">Stock</th>
+					<th scope="col">Accion</th>
+					<th scope="col">Accion</th>
+				</tr>
+			</thead>
+			
+			<tbody >
+				<tr th:each="prod:${listaprod}">
+					<td th:text="${prod.idproducto}"></td>
+					<td th:text="${prod.nombre}"></td>
+					<td th:text="${prod.descripcion}"></td>
+					<td th:text="${prod.marca}"></td>
+					<td th:text="${prod.categoria}"></td>
+					<td th:text="${prod.precio}"></td>
+					<td th:text="${prod.stock}"></td>
+					<td><a class="btn btn-warning" th:href="@{EditarProducto/}+${prod.idproducto}">Editar</a> </td>
+					<td><a class="btn btn-danger" th:href="@{EliminarProducto/}+${prod.idproducto}">Eliminar</a> </td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	<!-- /.container -->
+
+	<!-- Footer -->
+	<div th:include="PaginaMaestraProductos::footer"></div>
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="../vendor/jquery/jquery.min.js"></script>
+	<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
